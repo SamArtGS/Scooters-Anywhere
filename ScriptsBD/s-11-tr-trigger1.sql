@@ -1,3 +1,13 @@
+-- Companía:  Scooters Anywhere
+-- Project:   Modelo Proyecto Final
+-- Author:    Garrido Samuel y Jorge Cárdenas
+-- Fecha:     04 de Junio del 2020
+
+/*
+Necesidades para iniciar un servicio: 
+    
+*/
+
 CREATE OR REPLACE TRIGGER INICIAR_SERVICIO AFTER INSERT ON SERVICIO
   FOR EACH ROW
 DECLARE

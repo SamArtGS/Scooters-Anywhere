@@ -23,7 +23,7 @@ INSERT INTO STATUS VALUES (SEQ_STATUS.NEXTVAL,'FZ','FUERA DE ZONA');
 
 PROMPT INSERTANDO USUARIOS
 
-@s-09-carga-inicial-usuarios.sql
+@s-09-carga-inicial-usuario.sql
 
 PROMPT INSERTANDO TARJETAS PREPAGO
 
@@ -40,6 +40,23 @@ PROMPT INSERTANDO LOS TELÉFONOS DE LAS MARCAS
 PROMPT INSERTANDO SCOOTERS
 
 @s-09-carga-inicial-scooters.sql
+
+PROMPT INSERTANDO UBICACION DE SCOOTERS
+
+@s-09-carga-inicial-ubicaciones1.sql
+PROMPT CARGA 1 LISTA
+@s-09-carga-inicial-ubicaciones2.sql
+PROMPT CARGA 2 LISTA
+@s-09-carga-inicial-ubicaciones3.sql
+PROMPT CARGA 3 LISTA
+@s-09-carga-inicial-ubicaciones4.sql
+PROMPT CARGA 4 LISTA
+@s-09-carga-inicial-ubicaciones5.sql
+PROMPT CARGA 5 LISTA
+
+PROMPT INSERTANDO UBICACION DE SCOOTERS
+
+PROMPT LISTO! :)
 
 set feedback on
 
