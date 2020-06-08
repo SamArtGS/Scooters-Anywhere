@@ -6,8 +6,8 @@
 whenever sqlerror exit
 set feedback off
 
-Prompt Conectando como sys
-conn scooters_admin@PROYECTO
+Prompt Conectando como administrador
+connect scooters_admin/samjor123
 
 -----------------------------Código de Limpieza--------------------------------
 declare 
@@ -43,8 +43,16 @@ grant rol_admin to cg_proy_admin;
 grant rol_invitado to cg_proy_invitado;
 
 set feedback on
-Prompt
-Prompt Sucessful User Creation!!
-Prompt
+
+Prompt Creación de usuarios exitosa :)
+
+connect cg_proy_admin/samjor
+
+prompt Conectado a cg_proy_admin
+
+@s-02-entidades.SQL
+
+Prompt Creación de tablas exitosa
 
 whenever sqlerror continue
+
