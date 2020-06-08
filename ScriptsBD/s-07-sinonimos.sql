@@ -3,94 +3,43 @@
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
 
-CREATE SEQUENCE SEQ_USUARIO
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+grant select on jrc_p1001_subastas.articulo to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.articulo_arqueologico to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.articulo_donado to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.articulo_famoso to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.cliente to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.entidad to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.factura_cliente to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.historico_status_articulo to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.pais to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.status_articulo to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.subasta to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.subasta_venta to jrc_p1101_subastas;
+grant select on jrc_p1001_subastas.tarjeta_cliente to jrc_p1101_subastas;
 
-CREATE SEQUENCE SEQ_TARJETA_PREPAGO
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
 
-CREATE SEQUENCE SEQ_TARJETA_CLIENTE
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM articulo for jrc_p1001_subastas.articulo;
 
-CREATE SEQUENCE SEQ_MARCA
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM articulo_arqueologico for jrc_p1001_subastas.articulo_arqueologico;
 
-CREATE SEQUENCE SEQ_TELEFONO_MARCA
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM articulo_donado for jrc_p1001_subastas.articulo_donado;
 
-CREATE SEQUENCE SEQ_STATUS
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM articulo_famoso for jrc_p1001_subastas.articulo_famoso;
 
-CREATE SEQUENCE SEQ_SCOOTER
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM cliente for jrc_p1001_subastas.cliente;
 
-CREATE SEQUENCE SEQ_UBICACION
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM entidad for jrc_p1001_subastas.entidad;
 
-CREATE SEQUENCE SEQ_ZONA
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM factura_cliente for jrc_p1001_subastas.factura_cliente;
 
-CREATE SEQUENCE SEQ_HIST_SCOOTER_STATUS
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM historico_status_articulo for jrc_p1001_subastas.historico_status_articulo;
 
-CREATE SEQUENCE SEQ_REPORTE_FALLA
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 10
-NOCYCLE;
+CREATE OR REPLACE SYNONYM pais for jrc_p1001_subastas.pais;
 
-CREATE SEQUENCE SEQ_IMAGEN_REPORTE
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM status_articulo for jrc_p1001_subastas.status_articulo;
 
-CREATE SEQUENCE SEQ_SERVICIO
-INCREMENT BY 1
-START WITH 1
-MINVALUE 1
-CACHE 2
-NOCYCLE;
+CREATE OR REPLACE SYNONYM subasta for jrc_p1001_subastas.subasta;
 
+CREATE OR REPLACE SYNONYM subasta_venta for jrc_p1001_subastas.subasta_venta;
+
+CREATE OR REPLACE SYNONYM tarjeta_cliente for jrc_p1001_subastas.tarjeta_cliente;
