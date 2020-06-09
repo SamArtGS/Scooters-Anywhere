@@ -29,10 +29,11 @@ end;
 
 -- Creando Roles
 create role rol_admin;
-grant create session, create table, create view, create sequence, 
-  create procedure to rol_admin;
+grant create session, create table, create view, create sequence,create synonym,create database link, create trigger,create procedure,DROP ANY DIRECTORY to rol_admin;
+GRANT execute ON rdsadmin.rdsadmin_util TO rol_admin;
 create role rol_invitado;
 grant create session to rol_invitado;
+
 
 --Creando Usuarios
 create user cg_proy_admin identified by samjor quota unlimited on users;
@@ -41,18 +42,6 @@ create user cg_proy_invitado identified by samjor quota unlimited on users;
 -- Asignando roles 
 grant rol_admin to cg_proy_admin;
 grant rol_invitado to cg_proy_invitado;
-
-set feedback on
-
-Prompt Creación de usuarios exitosa :)
-
-connect cg_proy_admin/samjor
-
-prompt Conectado a cg_proy_admin
-
-@s-02-entidades.SQL
-
-Prompt Creación de tablas exitosa
 
 whenever sqlerror continue
 

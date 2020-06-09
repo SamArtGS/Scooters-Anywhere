@@ -3,19 +3,31 @@
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
 
-grant select on jrc_p1001_subastas.articulo to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.articulo_arqueologico to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.articulo_donado to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.articulo_famoso to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.cliente to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.entidad to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.factura_cliente to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.historico_status_articulo to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.pais to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.status_articulo to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.subasta to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.subasta_venta to jrc_p1101_subastas;
-grant select on jrc_p1001_subastas.tarjeta_cliente to jrc_p1101_subastas;
+grant select on CG_PROY_ADMIN.articulo to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.articulo_arqueologico to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.articulo_donado to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.articulo_famoso to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.cliente to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.entidad to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.factura_cliente to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.historico_status_articulo to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.pais to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.status_articulo to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.subasta to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.subasta_venta to jrc_p1101_subastas;
+
+grant select on CG_PROY_ADMIN.tarjeta_cliente to jrc_p1101_subastas;
 
 
 CREATE OR REPLACE SYNONYM articulo for jrc_p1001_subastas.articulo;
