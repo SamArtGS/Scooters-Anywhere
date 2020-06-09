@@ -67,7 +67,7 @@ PROMPT ==============================================
 
 PROMPT GENERANDO VISTAS
 
---@s-08-vistas.sql
+@s-08-vistas.sql
 
 PROMPT CREACIÓN DE VISTAS.           -> OK!
 
