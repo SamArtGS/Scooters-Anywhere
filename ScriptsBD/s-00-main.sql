@@ -2,6 +2,7 @@
 -- Project:   Modelo Proyecto Final
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
+
 PROMPT ==============================================
 PROMPT BIENVENIDO! - SAMUEL Y JORGE :)
 PROMPT ==============================================
@@ -27,7 +28,7 @@ PROMPT ==============================================
 
 PROMPT GENERANDO LAS TABLAS TEMPORALES
 
---@s-03-tablas-temporales.sql
+@s-03-tablas-temporales.sql
 
 PROMPT CREACIÓN DE TABLAS TEMPORALES  -> OK!
 
@@ -87,23 +88,23 @@ PROMPT CONSULTA 1: SE DESEA CONOCER...
 
 SELECT NOMBRE FROM ZONA WHERE ZONA_ID<7;
 
-PROMPT 
+PROMPT
 
 PROMPT CONSULTA 2: SE DESEA CONOCER...
 
 SELECT NOMBRE FROM ZONA WHERE ZONA_ID<7;
-PROMPT 
+PROMPT
 
 PROMPT CONSULTA 3: SE DESEA CONOCER...
 
 SELECT NOMBRE FROM ZONA WHERE ZONA_ID<7;
-PROMPT 
+PROMPT
 
 PROMPT CONSULTA 4: SE DESEA CONOCER...
 
 SELECT NOMBRE FROM ZONA WHERE ZONA_ID<7;
-PROMPT 
-PROMPT 
-PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = = 
+PROMPT
+PROMPT
+PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = =
 PROMPT PROYECTO FINAL BD - SAMUEL Y JORGE FINALIZADO!
-PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = = 
+PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = =

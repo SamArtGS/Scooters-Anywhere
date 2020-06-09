@@ -1,6 +1,7 @@
---@Autor: Jorge Cárdenas Cárdenas - Samuel Arturo Garrido Sanchez
---@Fecha creación: 05/06/2020
---@Descripción: Proyecto, Creación de usuarios y roles
+-- Companía:  Scooters Anywhere
+-- Project:   Modelo Proyecto Final
+-- Author:    Garrido Samuel y Jorge Cárdenas
+-- Fecha:     04 de Junio del 2020
 
 
 whenever sqlerror exit
@@ -10,10 +11,10 @@ Prompt Conectando como administrador
 connect scooters_admin/samjor123
 
 -----------------------------Código de Limpieza--------------------------------
-declare 
+declare
   cursor cur_usuarios is
     select username from dba_users where username like 'CG_PROY_%';
-  cursor cur_roles is 
+  cursor cur_roles is
     select role from dba_roles where role like 'ROL_%';
 begin
   for r in cur_usuarios loop
@@ -40,9 +41,8 @@ grant create session, create synonym ,create view to rol_invitado;
 create user cg_proy_admin identified by samjor quota unlimited on users;
 create user cg_proy_invitado identified by samjor quota unlimited on users;
 
--- Asignando roles 
+-- Asignando roles
 grant rol_admin to cg_proy_admin;
 grant rol_invitado to cg_proy_invitado;
 
 whenever sqlerror continue
-
