@@ -59,9 +59,9 @@ PROMPT ==============================================
 
 PROMPT GENERANDO SINÓNIMOS
 
---@s-07-sinonimos.sql
+@s-07-sinonimos.sql
 
-PROMPT CREACIÓN DE SINÓNIMOS.         -> OK!
+PROMPT CREACIÓN DE SINÓNIMOS.           -> OK!
 
 PROMPT ==============================================
 
