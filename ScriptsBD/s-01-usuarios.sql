@@ -7,7 +7,7 @@ whenever sqlerror exit
 set feedback off
 
 Prompt Conectando como administrador
-connect scooters_admin/samjor123
+connect scooters_admin@PROYECTO/samjor123
 
 -----------------------------Código de Limpieza--------------------------------
 declare 
