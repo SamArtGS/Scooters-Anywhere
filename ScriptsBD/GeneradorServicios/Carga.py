@@ -18,11 +18,13 @@ class Scooter():
   def __init__(self, fecha):
     self.fecha = fecha
 
-  def getFolio(self, id):
-    if(self.folio.get(id)):
-      return self.folio.get(id)
-    self.folio[id] = random.randint(0, 100000)
-    return self.folio.get(id)
+  def getFolio(self):
+    valores = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    fol = "".join([random.choice(valores) for i in range(13)])
+    while self.folio.get(fol):
+      fol = "".join([random.choice(valores) for i in range(13)])
+    self.folio[fol] = 1
+    return fol
 
   def getScooter(self, fecha_fin):
     id = random.randint(0, 1000)
@@ -153,7 +155,7 @@ def main():
     precio = scooter.getPrecio(fecha_inicio, fecha_fin)
     if(tipo_servicio == 0):
       scooter_id = scooter.getScooter(fecha_fin)
-      folio = scooter.getFolio(scooter_id)
+      folio = scooter.getFolio()
       f1.write('INSERT INTO SERVICIO_VIAJE (SERVICIO_ID, FOLIO, SCOOTER_ID) '
         + 'VALUES('
         + str(i) + ', '
