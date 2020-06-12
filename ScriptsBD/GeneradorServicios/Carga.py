@@ -125,7 +125,7 @@ class Usuario():
 class Fechas():
 
   def __init__(self):
-    self.fecha_actual  = datetime(2020, 5, 15, 8, 00, 00, 00000)
+    self.fecha_actual  = datetime(2018, 4, 15, 8, 00, 00, 00000)
 
   def getFecha(self):
     self.fecha_actual += timedelta(hours = random.random() * .8)
@@ -144,7 +144,7 @@ def main():
   f2 = open("s-09-carga-inicial-servicio_renta.sql", "w")
   f3 = open("s-09-carga-inicial-servicio_recarga.sql", "w")
   f4 = open("s-09-carga-recarga_scooter.sql", "w")
-  f.write('alter session set nls_date_format="dd-mm-yyyy hh24:mi:ss";')
+  f.write('alter session set nls_date_format="dd-mm-yyyy hh24:mi:ss";\n')
   for i in range(0, 10000):
     tipo_servicio = random.randint(0,2)
     id = usuario.getUser()
