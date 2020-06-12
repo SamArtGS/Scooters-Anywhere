@@ -151,16 +151,6 @@ def main():
     fecha_inicio = fecha.getFecha()
     fecha_fin = usuario.getFechaFin(id)
     precio = scooter.getPrecio(fecha_inicio, fecha_fin)
-    f.write('INSERT INTO SERVICIO (SERVICIO_ID, USUARIO_ID, TIPO_SERVICIO,'
-      +'FECHA_INICIO, FECHA_FIN, STATUS_SERVICIO_ID, PRECIO) VALUES('
-      + str(i) + ', '
-      + str(id).zfill(4)  + ', '
-      + "'" + fecha_inicio.strftime('%d/%m/%Y %H:%M:%S')  + "', "
-      + "'" + fecha_fin.strftime('%d/%m/%Y %H:%M:%S')     + "', "
-      + "'" + nombre_servicio[tipo_servicio]              + "', "
-      + str(precio)
-      + ');\n'
-    )
     if(tipo_servicio == 0):
       scooter_id = scooter.getScooter(fecha_fin)
       folio = scooter.getFolio(scooter_id)
@@ -193,7 +183,9 @@ def main():
         + "'" + usuario.getClabe(id) + "'"
         + ');\n'
       )
+      precio = 0
       for j in range(0, random.randint(1,20)):
+        precio += 500
         scooter_id = scooter.getScooter(fecha_fin)
         f4.write('INSERT INTO RECARGA_SCOOTER (SERVICIO_ID, SCOOTER_ID,'
           + ' NIVEL_CARGA) '
@@ -203,6 +195,16 @@ def main():
           + str(round(random.random() * 100,2))
           + ');\n'
         )
+    f.write('INSERT INTO SERVICIO (SERVICIO_ID, USUARIO_ID, TIPO_SERVICIO,'
+      +'FECHA_INICIO, FECHA_FIN, STATUS_SERVICIO_ID, PRECIO) VALUES('
+      + str(i) + ', '
+      + str(id).zfill(4)  + ', '
+      + "'" + fecha_inicio.strftime('%d/%m/%Y %H:%M:%S')  + "', "
+      + "'" + fecha_fin.strftime('%d/%m/%Y %H:%M:%S')     + "', "
+      + "'" + nombre_servicio[tipo_servicio]              + "', "
+      + str(precio)
+      + ');\n'
+    )
   f.write("commit;")
   f1.write("commit;")
   f2.write("commit;")
