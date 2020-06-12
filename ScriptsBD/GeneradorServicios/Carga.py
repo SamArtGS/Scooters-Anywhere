@@ -195,8 +195,8 @@ def main():
           + str(round(random.random() * 100,2))
           + ');\n'
         )
-    f.write('INSERT INTO SERVICIO (SERVICIO_ID, USUARIO_ID, TIPO_SERVICIO,'
-      +'FECHA_INICIO, FECHA_FIN, STATUS_SERVICIO_ID, PRECIO) VALUES('
+    f.write('INSERT INTO SERVICIO (SERVICIO_ID, USUARIO_ID,'
+      +'FECHA_INICIO, FECHA_FIN, TIPO_SERVICIO, PRECIO) VALUES('
       + str(i) + ', '
       + str(id).zfill(4)  + ', '
       + "'" + fecha_inicio.strftime('%d/%m/%Y %H:%M:%S')  + "', "
