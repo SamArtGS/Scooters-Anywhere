@@ -27,9 +27,9 @@ class Scooter():
     return fol
 
   def getScooter(self, fecha_fin):
-    id = random.randint(0, 1000)
+    id = random.randint(1, 1000)
     while(self.scoo.get(id) and self.scoo.get(id).get('F') > self.fecha.fecha_actual):
-      id = random.randint(0, 1000)
+      id = random.randint(1, 1000)
       self.fecha.fecha_actual = self.fecha.getFecha()
     self.scoo[id] = {'F' : fecha_fin}
     return id
@@ -110,9 +110,9 @@ class Usuario():
 
   def getUser(self):
     global tipo_servicio
-    id = random.randint(0, 500)
+    id = random.randint(1, 500)
     while(self.users.get(id) and self.users.get(id) > self.fecha.fecha_actual):
-      id = random.randint(0,500)
+      id = random.randint(1,500)
     if tipo_servicio == 0:
       self.users[id] = self.fecha.fecha_actual + timedelta(hours = (random.random() * 7) + 0.5)
     elif tipo_servicio == 1:
@@ -147,7 +147,7 @@ def main():
   f3 = open("s-09-carga-inicial-servicio_recarga.sql", "w")
   f4 = open("s-09-carga-recarga_scooter.sql", "w")
   f.write('alter session set nls_date_format="dd-mm-yyyy hh24:mi:ss";\n')
-  for i in range(0, 10000):
+  for i in range(1, 10001):
     tipo_servicio = random.randint(0,2)
     id = usuario.getUser()
     fecha_inicio = fecha.getFecha()
