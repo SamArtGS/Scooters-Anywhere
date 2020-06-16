@@ -4,8 +4,22 @@
 -- Fecha:     04 de Junio del 2020
 
 /*
-Necesidades para iniciar un servicio: 
-    
+Casos de estudio para evaluar con profesor:
+
+-Excepciones: Fecha movida hacia clase padre entonces validar las 8 horas y los 14 días de los subtipos servicio.
+Además al iniciar un servicio -> Insertar un cambio al historial del status del scooter
+                              -> Actualizar el status del servicio del scooter a "en viaje" o "en renta" etc.
+                              -> Al eliminar un servicio mandar ese registro a tabla externa "Eliminados"
+                              
+                              -> Asignar la recompensa de los 1000 puntos al usuario al mandar un insert reporte falla
+                              -> Cambiar el status a fuera de zona al insertar una ubicación fuera del las coordenadas de la zona.
+                              -> Cobrar el servicio. Al iniciar un servicio descontar primero los puntos ganados y que estén en fecha.
+                              
+                              ->Otros: checar la validez de las calves o tarjetas de crédito.
+                              -> Al momento de añadir un scooter de reemplazo que este se encuentre "disponible"
+                              -> Checar que los status de los scooters pasen por los diagramas de estados
+
+
 */
 
 CREATE OR REPLACE TRIGGER INICIAR_SERVICIO AFTER INSERT ON SERVICIO
@@ -18,28 +32,5 @@ DECLARE
 SELECT INMUEBLE_ID,CLIENTE_ID,STATUS_INMUEBLE_ID FROM INMUEBLE WHERE CLIENTE_ID = P_AVAL_CLIENTE;
   V_PAGADO NUMBER;
 BEGIN
-    IF :NEW.CLIENTE_ID IS NULL AND :NEW.STATUS_INMUEBLE_ID = 1 THEN DBMS_OUTPUT.PUT_LINE('');
-    ELSIF :NEW.CLIENTE_ID IS NOT NULL
-    AND :NEW.STATUS_INMUEBLE_ID > 1
-    AND :NEW.STATUS_INMUEBLE_ID != 5 THEN
-    SELECT AVAL_CLIENTE_ID INTO V_CLIENTE_AVAL FROM CLIENTE
-    WHERE :NEW.CLIENTE_ID = CLIENTE.CLIENTE_ID; V_PAGADO := 0;
-    FOR R IN CUR_INMUEBLES_AVAL(V_CLIENTE_AVAL) LOOP IF R.STATUS_INMUEBLE_ID = 5 THEN
-    V_PAGADO := 1; END IF;
-    END LOOP;
-    IF V_PAGADO = 0 THEN
-    INSERT INTO ASIGNACION_PENDIENTE
-    VALUES (SEQ_ASIGNACION_PENDIENTE.NEXTVAL,
-    'EL CLIENTE Y AVAL NO TIENEN PROPIEDADES', SYSDATE,
-    :NEW.INMUEBLE_ID,:NEW.CLIENTE_ID, :NEW.STATUS_INMUEBLE_ID);
-            RAISE E_ERROR_AVAL_SIN_PROPIEDAD;
-        END IF;
-    ELSIF :NEW.CLIENTE_ID IS NOT NULL AND :NEW.STATUS_INMUEBLE_ID = 5 THEN
-    DBMS_OUTPUT.PUT_LINE(''); ELSE
-    RAISE E_ERROR_INMUEBLE; END IF;
-    EXCEPTION
-    WHEN E_ERROR_AVAL_SIN_PROPIEDAD THEN
-    RAISE_APPLICATION_ERROR(-20012,'AVAL Y CLIENTE DEL PUEBLO BUENO Y SABIO'); WHEN E_ERROR_INMUEBLE THEN
-    RAISE_APPLICATION_ERROR(-20010,'NO ESTÁ DISPONIBLE EL INMUEBLE'); END;
-    /
+   
 SHOW ERRORS;
