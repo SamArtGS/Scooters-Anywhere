@@ -5,7 +5,7 @@
 
 
 
-/*
+
 drop database link db2_dblink;
 create database link db2_dblink
   connect to CG_PROY_ADMIN identified by samjor
