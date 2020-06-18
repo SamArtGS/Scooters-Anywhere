@@ -1,1 +1,0 @@
-create or replace procedure recompensar_Usuario
