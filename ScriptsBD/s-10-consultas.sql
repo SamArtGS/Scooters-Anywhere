@@ -27,7 +27,7 @@ where st.status_id = hs.status_id
   and sc.scooter_id = rf.scooter_id
   and rf.usuario_id = u.usuario_id
   and st.clave = 'CF' -- Con fallas
-  group by u..usuario_id, u.email, u.nombre, u. ap_paterno, u.ap_materno;
+  group by u.usuario_id, u.email, u.nombre, u. ap_paterno, u.ap_materno;
 
 
 -- El cliente que más recargas ha hecho
