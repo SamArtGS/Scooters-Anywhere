@@ -1,49 +1,33 @@
-var http = require('http');
-var fs = require('fs');
-var oracledb = require('oracledb');
+var oracledb = require("oracledb");
+var express = require("express");
+var app = express();
+var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
+var peticion = require("./responseORCL");
+
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+app.use(methodOverride());
+app.use(bodyParser.raw());
+app.use(bodyParser.text());
+
+var router = express.Router();
 
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
-async function run() {
-
-  let connection;
-  try {
-    connection = await oracledb.getConnection(  {
-      user          : "CG_PROY_ADMIN",
-      password      : "samjor",
-      connectString : "cursodb.c7rbflvluzyk.us-east-2.rds.amazonaws.com:1521/SCOOTERS"
-    });
-
-    const result = await connection.execute(
-      `SELECT ZONA_ID, NOMBRE,POLIGONO
-       FROM zona
-       WHERE zona_id = :id`,
-      [12],
-    );
-    console.log(result.rows);
-
-  } catch (err) {
-    console.error(err);
-  } finally {
-    if (connection) {
-      try {
-        await connection.close();
-      } catch (err) {
-        console.error(err);
-      }
-    }
+router.get('/scooter',function(request,response){
+  var opc = parseInt(request.query.opc);
+  switch(opc){
+    case 1:
+      sql = "SELECT * FROM SCOOTER WHERE SCOOTER_ID<100";
+      peticion.open(sql,[],false,response);
+      break;
   }
-}
-
-fs.readFile('./index.html', function (err, html) {
-    if (err) {
-        throw err; 
-    }       
-    http.createServer(function(request, response) {  
-        response.writeHeader(200, {"Content-Type": "text/html"});  
-        response.write(html);  
-        response.end();  
-    }).listen(8000);
+  response.end;
 });
 
-run();
+app.use(router);
+app.listen(3000,function(){
+  console.log('Servidor Web - http://localhost:3000');
+});
