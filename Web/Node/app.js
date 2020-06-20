@@ -1,4 +1,5 @@
-var http = require('http') fs = require('fs');
+var http = require('http');
+var fs = require('fs');
 var oracledb = require('oracledb');
 
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
