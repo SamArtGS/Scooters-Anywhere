@@ -37,7 +37,7 @@ class Reporte_Falla():
   
   def writeDatos(self):
     global fecha_actual
-    file = open("s-09-carga-inicial-reporte_fallas.sql", "a")
+    file = open("../s-09-carga-inicial-reporte_fallas.sql", "a")
     file.write('INSERT INTO REPORTE_FALLA (REPORTE_FALLA_ID, FECHA_REPORTE, '
       +'LATITUD, LONGITUD, DESCRIPCION, USUARIO_ID, SCOOTER_ID) VALUES('
       + "SEQ_REPORTE_FALLA.NEXTVAL, "
@@ -54,9 +54,9 @@ class Reporte_Falla():
     file.close()
 
   def writeImagen(self):
-    file = open("s-09-carga-inicial-imagen_reporte.sql", "a")
+    file = open("../s-09-carga-inicial-imagen_reporte.sql", "a")
     for i in range(random.randint(0,4)):
-      file.write('INSERT INTO IMAGEN_REPORTE (REPORTE_FALLA_ID, IMAGEN, '
+      file.write('INSERT INTO IMAGEN_REPORTE (IMAGEN_REPORTE_ID, IMAGEN, '
       +'REPORTE_FALLA_ID) VALUES('
       + "SEQ_IMAGEN_REPORTE.NEXTVAL, "
       + "empty_blob(), "
@@ -91,10 +91,20 @@ class Servicio():
   
   def writeServicio(self, file):
     global fecha_actual
-    file.write('INSERT INTO SERVICIO (SERVICIO_ID, USUARIO_ID,'
-      +' TIPO_SERVICIO) VALUES('
+    delta = self.fecha_fin - fecha_actual
+    if(self.tipo_servicio == 'V'):
+      precio = round((delta.seconds/3600) * 40, 2)
+    elif self.tipo_servicio == 'R':
+      precio = round((delta.days) * 200, 2)
+    else:
+      precio = -1
+    file.write('INSERT INTO SERVICIO (SERVICIO_ID, USUARIO_ID, PRECIO, FECHA_INICIO, '
+      + 'FECHA_FIN,TIPO_SERVICIO) VALUES('
       + str(self.servicio_id) + ', '
       + str(self.usuario.usuario_id) + ', '
+      + str(precio) + ", "
+      + "'" + fecha_actual.strftime('%d/%m/%Y %H:%M:%S')  + "', "
+      + "'" + self.fecha_fin.strftime('%d/%m/%Y %H:%M:%S')  + "', "
       + "'" + self.tipo_servicio + "'"
       + ');\n'
     )
@@ -121,13 +131,11 @@ class Servicio_Viaje(Servicio):
 
   def writeServicioViaje(self, file):
     global fecha_actual
-    file.write('INSERT INTO SERVICIO_VIAJE (SERVICIO_ID, FOLIO, FECHA_INICIO,'
-        + ' FECHA_FIN, SCOOTER_ID) '
+    file.write('INSERT INTO SERVICIO_VIAJE (SERVICIO_ID, FOLIO, '
+        + ' SCOOTER_ID) '
         + 'VALUES('
         + str(self.servicio_id) + ", "
         + "'" + self.folio  + "', "
-        + "'" + fecha_actual.strftime('%d/%m/%Y %H:%M:%S')  + "', "
-        + "'" + self.fecha_fin.strftime('%d/%m/%Y %H:%M:%S')     + "', "
         + str(self.scooter.scooter_id)
         + ');\n'
       )
@@ -158,12 +166,12 @@ class Servicio_Renta(Servicio):
           self.direc[random.randint(1,500)].append(row[0])
   
   def writeServicioRenta(self, file):
-    file.write('INSERT INTO SERVICIO_RENTA (SERVICIO_ID, DIRECCION, FECHA_INICIO,'
-      + ' DIAS_CUSTODIA, SCOOTER_ID) '
+    file.write('INSERT INTO SERVICIO_RENTA (SERVICIO_ID, DIRECCION, DIAS_CUSTODIA, '
+      + 'SCOOTER_ID) '
       + 'VALUES('
       + str(self.servicio_id) + ", "
-      + "'" + fecha_actual.strftime('%d/%m/%Y %H:%M:%S')  + "', "
-      + "'" + str(self.dias_custodia)     + "', "
+      + "'" + str(self.direccion[random.randint(1, len(self.direccion)) -1]) + "', "
+      + str(self.dias_custodia) + ", "
       + str(self.scooter.scooter_id)
       + ');\n'
     )
@@ -222,11 +230,11 @@ class Servicio_Recarga(Servicio):
           self.clabe[random.randint(1, 500)].append(row) 
 
   def writeServicioRecarga(self, file):
-    file.write('INSERT INTO SERVICIO_RECARGA (SERVICIO_ID, NOMNRE_BANCO, '
+    file.write('INSERT INTO SERVICIO_RECARGA (SERVICIO_ID, NOMBRE_BANCO, '
       + 'CLABE_INTERBANCARIA) VALUES('
       + str(self.servicio_id) + ", "
       + "'" + self.banco  + "', "
-      + "'" + self.clabe_interbancaria + "', "
+      + self.clabe_interbancaria 
       + ');\n'
     )
 
@@ -238,7 +246,7 @@ class Recarga_Scooter():
     self.servicio = servicio
   
   def writeRecargaScooter(self):
-    file = open("s-09-carga-inicial-recarga-scooter.sql", "a")
+    file = open("../s-09-carga-inicial-recarga-scooter.sql", "a")
     file.write('INSERT INTO RECARGA_SCOOTER (SERVICIO_ID, SCOOTER_ID, '
       +'NIVEL_CARGA) VALUES('
       + str(self.servicio.servicio_id) + ", "
@@ -265,8 +273,8 @@ class Scooter():
   
   def writeHistorico(self):
     global fecha_actual
-    file = open("s-09-carga-inicial-hist_scooter_status.sql", "a")
-    file.write('INSERT INTO HIST_SCOOTER_STATUS (HIST_SCOOTER_STATUS, '
+    file = open("../s-09-carga-inicial-hist_scooter_status.sql", "a")
+    file.write('INSERT INTO HIST_SCOOTER_STATUS (HIST_SCOO_STATUS_ID, '
       + 'STATUS_ID, SCOOTER_ID, FECHA_STATUS) '
       + 'VALUES('
       + 'SEQ_HIST_SCOOTER_STATUS.NEXTVAL, '
@@ -348,14 +356,14 @@ def generarServicio(servicio_id):
 
 def main():
   global lista_servicios
-  f =  open("s-09-carga-inicial-servicio.sql", "w")
-  f1 = open("s-09-carga-inicial-servicio_viaje.sql", "w")
-  f3 = open("s-09-carga-inicial-servicio_renta.sql", "w")
-  f4 = open("s-09-carga-inicial-servicio_recarga.sql", "w")
-  open("s-09-carga-inicial-reporte_fallas.sql", "w").close()
-  open("s-09-carga-inicial-imagen_reporte.sql", "w").close()
-  open("s-09-carga-inicial-recarga-scooter.sql", "w").close()
-  open("s-09-carga-inicial-hist_scooter_status.sql", "w").close()
+  f =  open("../s-09-carga-inicial-servicio.sql", "w")
+  f1 = open("../s-09-carga-inicial-servicio_viaje.sql", "w")
+  f3 = open("../s-09-carga-inicial-servicio_renta.sql", "w")
+  f4 = open("../s-09-carga-inicial-servicio_recarga.sql", "w")
+  open("../s-09-carga-inicial-reporte_fallas.sql", "w").close()
+  open("../s-09-carga-inicial-imagen_reporte.sql", "w").close()
+  open("../s-09-carga-inicial-recarga_scooter.sql", "w").close()
+  open("../s-09-carga-inicial-hist_scooter_status.sql", "w").close()
   for i in range(1,4001):
     actualizaTiempo()
     revisarFechas()
