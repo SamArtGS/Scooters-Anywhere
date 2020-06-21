@@ -12,7 +12,7 @@ declare
   v_scooter_id  scooter.scooter_id%type; -- Scooter de prueba
   v_status_id   status.status_id%type;   -- Status esperado
 begin
-  dbms_output.put_line('Realizando Validación del Procediiento: sp_actualiza_status');
+  dbms_output.put_line('Realizando Validación del Procediento: sp_actualiza_status');
   select scooter_id into v_scooter_id
   from scooter
   where status_id = 2
