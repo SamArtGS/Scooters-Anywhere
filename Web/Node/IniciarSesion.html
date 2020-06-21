@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicons.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  <title>Clínica San Luis Huexotla</title>
+  <title>SCOOTERS ANYWHERE</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -16,12 +16,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
   <!-- CSS Files -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
-
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"  />
+    <link href="/css/material-kit.css?v=1.2.1" rel="stylesheet" type="text/css" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="assets/assets-for-demo/vertical-nav.css" rel="stylesheet" />
-  <link href="assets/assets-for-demo/demo.css" rel="stylesheet" />
+  <link href="/assets-for-demo/vertical-nav.css" rel="stylesheet" type="text/css"  />
+  <link href="/assets-for-demo/demo.css" rel="stylesheet"  type="text/css" />
 
 </head>
 
@@ -38,7 +37,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="presentation.html"> ⚕︎ Clínica San Luis Huexotla </a> 
+            <a class="navbar-brand" href="presentation.html">🛴Scooters Anywhere</a> 
           </div>
 
 
@@ -49,38 +48,24 @@
 
 
 
-            <li>
-            <a href="index.html">
-              <i class="material-icons">supervised_user_circle</i> ¿Quiénes somos?
-            </a>
-            </li>
+           <li>
+                <a href="Ubicacion.html">
+                  <i class="material-icons">map</i> Ubicación Scooters
+                </a>
+              </li>
 
 
 
             <li>
             <a href="index.html">
-              <i class="material-icons">grade</i> Servicios
+              <i class="material-icons">admin_panel_settings</i>Seguridad
             </a>
             </li>
 
-
-            <li>
-            <a href="index.html">
-              <i class="material-icons">loyalty</i> Boletín
-            </a>
-            </li>
-
-
-
-
-
-
-
-
-          <li class="dropdown">
+<li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-              <i class="material-icons">accessibility</i> Citas
+              <i class="material-icons">apartment</i> Compañía
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu dropdown-with-icons">
@@ -90,7 +75,7 @@
 
               <li>
                 <a href="sections.html#headers">
-                  <i class="material-icons">calendar_today</i> Agenda una cita
+                  <i class="material-icons">architecture</i>Cómo funciona Scooters Anywhere
                 </a>
               </li>
 
@@ -99,7 +84,7 @@
 
               <li>
                 <a href="Ubicacion.html">
-                  <i class="material-icons">map</i> Ubicación
+                  <i class="material-icons">group</i>Blog
                 </a>
               </li>
 
@@ -108,7 +93,7 @@
 
               <li>
                 <a href="sections.html#blogs">
-                  <i class="material-icons">contact_phone</i> Contacto
+                  <i class="material-icons">contact_phone</i>Ayuda
                 </a>
               </li>
 
@@ -117,25 +102,56 @@
             </ul>
           </li>
 
-          <li>
-            <a href="IniciarSesion.html">
-              <i class="material-icons">https</i> Iniciar Sesión
-            </a>
-            </li>
 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+              <i class="material-icons">person</i> Perfil
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu dropdown-with-icons">
+
+
+
+
+              <li>
+                <a href="sections.html#headers">
+                  <i class="material-icons">emoji_people</i>Iniciar Sesión
+                </a>
+              </li>
+
+
+
+
+              <li>
+                <a href="Ubicacion.html">
+                  <i class="material-icons">person_add</i>Regístrate
+                </a>
+              </li>
+
+              <li>
+                <a href="Ubicacion.html">
+                  <i class="material-icons">sentiment_very_dissatisfied</i>Olvidé contraseña
+                </a>
+              </li>
+
+            </ul>
+          </li>
+        
+          
 
             </ul>
           </div>
       </div>
     </nav>
-  
+
 
 
       
 
 
 
-<div class="page-header header-filter" style="background-image: url('bg2.jpg');height: 100vh; background-size: cover; background-position: top center;">
+<div class="page-header header-filter" style="background-image: url('/fondo.jpg');height: 100vh; background-position: top center;">
     <div class="container">
     <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center">
@@ -148,18 +164,15 @@
       <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
           <div class="card card-signup">
-            <form class="form" method="" action="">
-              
-              
+            <form class="form" action ="auth" method="POST">
               <div class="card-content">
-
                 <div class="input-group">
                   <span class="input-group-addon">
                     <i class="material-icons">face</i>
                   </span>
                   <div class="form-group label-floating">
-                <label class="control-label">Cédula Profesional</label>
-                <input type="number" class="form-control">
+                <label class="control-label">Correo electrónico</label>
+                <input type="email" name="username" class="form-control" required>
               </div>
                 </div>
 
@@ -169,21 +182,12 @@
                   </span>
                   <div class="form-group label-floating">
                 <label class="control-label">Contraseña</label>
-                <input type="password" class="form-control">
+                <input type="password" name="password" class="form-control" required>
               </div>
                 </div>
-
-                <!-- If you want to add a checkbox to this form, uncomment this code
-
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="optionsCheckboxes" checked>
-                    Subscribe to newsletter
-                  </label>
-                </div> -->
               </div>
               <div class="footer text-center">
-                <a href="ListaPaciente.html" class="btn btn-info btn-round">Entrar</a>
+                <button type="submit" class="btn btn-info">Entrar</button>
               </div>
             </form>
           </div>
@@ -192,38 +196,29 @@
     </div>
 
   </div>
-
-
-
-
-
-
-
-
-
             
 </body>
-<script src="assets/js/jquery.min.js" type="text/javascript"></script>
-  <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-  <script src="assets/js/material.min.js"></script>
+<script src="public/js/jquery.min.js" type="text/javascript"></script>
+  <script src="public/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="public/js/material.min.js"></script>
 
   <!--  Plugin for Date Time Picker and Full Calendar Plugin-->
-  <script src="assets/js/moment.min.js"></script>
+  <script src="public/js/moment.min.js"></script>
 
   <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="assets/js/nouislider.min.js" type="text/javascript"></script>
+  <script src="public/js/nouislider.min.js" type="text/javascript"></script>
 
   <!--  Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
-  <script src="assets/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
+  <script src="public/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
 
   <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="assets/js/bootstrap-selectpicker.js" type="text/javascript"></script>
+  <script src="public/js/bootstrap-selectpicker.js" type="text/javascript"></script>
 
   <!--  Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/  -->
-  <script src="assets/js/bootstrap-tagsinput.js"></script>
+  <script src="public/js/bootstrap-tagsinput.js"></script>
 
   <!--  Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
-  <script src="assets/js/jasny-bootstrap.min.js"></script>
+  <script src="public/js/jasny-bootstrap.min.js"></script>
 
   <!-- Plugin For Google Maps -->
   <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBn4Uga7u3Ae37I8Ll9u3sVbEsnjZYKtQQ"></script>
@@ -231,11 +226,11 @@
 
 
   <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
-  <script src="assets/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
+  <script src="public/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
 
   <!-- Fixed Sidebar Nav - JS For Demo Purpose, Don't Include it in your project -->
-  <script src="assets/assets-for-demo/modernizr.js" type="text/javascript"></script>
-  <script src="assets/assets-for-demo/vertical-nav.js" type="text/javascript"></script>
+  <script src="public/assets-for-demo/modernizr.js" type="text/javascript"></script>
+  <script src="public/assets-for-demo/vertical-nav.js" type="text/javascript"></script>
 
   <script type="text/javascript">
 

@@ -1,14 +1,19 @@
 {
   "name": "scooters",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicacion proyecto final BD",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Samuel Garrido y Jorge Cárdenas",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "md5": "^2.2.1",
+    "method-override": "^2.1.2",
     "oracledb": "^4.2.0"
   }
 }
