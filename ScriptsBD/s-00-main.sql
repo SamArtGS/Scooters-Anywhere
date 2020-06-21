@@ -76,33 +76,24 @@ PROMPT ==============================================================
 
 PROMPT GENERANDO CARGAS INICIALES (ATENCIÓN: TARDA UNOS MINUTOS!)
 
---@s-09-carga-inicial.sql
+@s-09-carga-inicial.sql
 
 PROMPT CARGA DE DATOS COMPLETA.      -> OK!
-/*
+
 PROMPT ==============================================================
 
 PROMPT ========================= CONSULTAS ==========================
 
-PROMPT CONSULTA 1: SE DESEA CONOCER...
+@s-10-consultas.sql
 
-SELECT NOMBRE FROM ZONA WHERE ZONA_ID<7;
 
-PROMPT
+@s-13-p-actualizar_status.sql
 
-PROMPT CONSULTA 2: SE DESEA CONOCER...
 
-SELECT NOMBRE FROM ZONA WHERE ZONA_ID<7;
-PROMPT
+@s-14-p-actualizar_status-prueba.sql
 
-PROMPT CONSULTA 3: SE DESEA CONOCER...
 
-SELECT NOMBRE FROM ZONA WHERE ZONA_ID<7;
-PROMPT
 
-PROMPT CONSULTA 4: SE DESEA CONOCER...
-
-SELECT NOMBRE FROM ZONA WHERE ZONA_ID<7;*/
 PROMPT
 PROMPT
 PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = =

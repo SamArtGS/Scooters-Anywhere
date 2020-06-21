@@ -32,38 +32,51 @@ PROMPT INSERTANDO SCOOTERS
 
 @s-09-carga-inicial-scooters.sql
 
+alter session set nls_date_format="yyyy-mm-dd hh24:mi:ss";
 PROMPT - INSERTANDO UBICACION DE SCOOTERS
 
-@s-09-carga-inicial-ubicaciones1.sql
-PROMPT - - CARGA 1 LISTA
-@s-09-carga-inicial-ubicaciones2.sql
-PROMPT - - CARGA 2 LISTA
-@s-09-carga-inicial-ubicaciones3.sql
-PROMPT - - CARGA 3 LISTA
-@s-09-carga-inicial-ubicaciones4.sql
-PROMPT - - CARGA 4 LISTA
-@s-09-carga-inicial-ubicaciones5.sql
-PROMPT - - CARGA 5 LISTA
---@s-09-carga-inicial-ubicaciones6.sql
-PROMPT - - CARGA 6 LISTA
---@s-09-carga-inicial-ubicaciones7.sql
-PROMPT - - CARGA 7 LISTA
---@s-09-carga-inicial-ubicaciones8.sql
-PROMPT - - CARGA 8 LISTA
---@s-09-carga-inicial-ubicaciones9.sql
-PROMPT - - CARGA 9 LISTA
---@s-09-carga-inicial-ubicaciones10.sql
-PROMPT - - CARGA 10 LISTA
+@s-09-carga-inicial-ubicaciones.sql
 
 PROMPT - INSERTANDO ZONA_SCOOTERS
 
 @s-09-carga-inicial-zona-scooter.sql
 
-PROMPT - INSERTANDO HISTORIAL DE LOS STATUS DE LOS SCOOTERS
+alter session set nls_date_format="dd/mm/yyyy hh24:mi:ss";
+PROMPT INSERTANDO SERVICIOS
 
-@s-09-carga-inicial-hist-status.sql
+@s-09-carga-inicial-servicio.sql
+
+PROMPT INSERTANDO SERVICIO RENTA
+
+@s-09-carga-inicial-servicio_renta.sql
+
+PROMPT INSERTANDO SERVICIO VIAJE
+
+@s-09-carga-inicial-servicio_viaje.sql
+
+PROMPT INSERTANDO SERVICIO RECARGA
+
+@s-09-carga-inicial-servicio_recarga.sql
+
+PROMPT INSERTANDO RECARGA SCOOTER
+
+@s-09-carga-inicial-recarga_scooter.sql
+
+PROMPT INSERTANDO HISTORIAL STATUS SCOOTER
+
+@s-09-carga-inicial-hist_scooter_status.sql
+
+PROMPT INSERTANDO REPORTES DE FALLA
+
+@s-09-carga-inicial-reporte_fallas.sql
+
+PROMPT INSERTANDO IMAGENES DE LOS REPORTES
+
+@s-09-carga-inicial-imagen_reporte.sql
+
 
 PROMPT INSERTANDO REPORTES DE FALLAS
+
 
 PROMPT LISTO! :)
 SET FEEDBACK ON

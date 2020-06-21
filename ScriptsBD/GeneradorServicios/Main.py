@@ -362,7 +362,7 @@ def main():
   f4 = open("../s-09-carga-inicial-servicio_recarga.sql", "w")
   open("../s-09-carga-inicial-reporte_fallas.sql", "w").close()
   open("../s-09-carga-inicial-imagen_reporte.sql", "w").close()
-  open("../s-09-carga-inicial-recarga-scooter.sql", "w").close()
+  open("../s-09-carga-inicial-recarga_scooter.sql", "w").close()
   open("../s-09-carga-inicial-hist_scooter_status.sql", "w").close()
   for i in range(1,4001):
     actualizaTiempo()

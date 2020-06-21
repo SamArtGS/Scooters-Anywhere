@@ -5,6 +5,7 @@
 
 /*
 Archivos Locales
+conn sys as sysdba
 CREATE OR REPLACE DIRECTORY BLOB_DIR AS '/tmp/';
 grant read, write on directory BLOB_DIR to CG_PROY_ADMIN
 conn CG_PROY_ADMIN/samjor
