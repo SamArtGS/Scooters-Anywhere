@@ -1,14 +1,20 @@
-Prompt creando objeto DATA_DIR
+-- Companía:  Scooters Anywhere
+-- Project:   Modelo Proyecto Final
+-- Author:    Garrido Samuel y Jorge Cárdenas
+-- Fecha:     04 de Junio del 2020
 
--- CREATE OR REPLACE DIRECTORY BLOB_DIR AS '/tmp/';
--- grant read, write on directory BLOB_DIR to CG_PROY_ADMIN
--- conn CG_PROY_ADMIN@proyecto/samjor
+/*
+Archivos Locales
+CREATE OR REPLACE DIRECTORY BLOB_DIR AS '/tmp/';
+grant read, write on directory BLOB_DIR to CG_PROY_ADMIN
+conn CG_PROY_ADMIN/samjor
 
+*/
+-- Archivos de Texto en AWS:
 BEGIN
   RDSADMIN.RDSADMIN_UTIL.CREATE_DIRECTORY('BLOB_DIR');
 END;
 /
-
 DECLARE
   fHandle  UTL_FILE.FILE_TYPE;
 BEGIN
