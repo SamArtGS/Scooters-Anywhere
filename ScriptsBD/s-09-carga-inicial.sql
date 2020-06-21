@@ -39,7 +39,7 @@ PROMPT - INSERTANDO UBICACION DE SCOOTERS
 
 PROMPT - INSERTANDO ZONA_SCOOTERS
 
-@s-09-carga-inicial-zona-scooter.sql
+@s-09-carga-inicial-zona_scooter.sql
 
 alter session set nls_date_format="dd/mm/yyyy hh24:mi:ss";
 PROMPT INSERTANDO SERVICIOS
