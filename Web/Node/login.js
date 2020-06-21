@@ -25,7 +25,7 @@ app.use(session({
 	cookie: { maxAge: 300000 }
 }));
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
-
+oracledb.autoCommit = true;
 //ELEMENTO DE CONEXIÓN PARA CONEXIONES ASÍNCRONAS
 connection = {
       user          : "CG_PROY_ADMIN",
@@ -82,6 +82,63 @@ app.post('/auth', async function(request, response) {
 				response.redirect('/dashboard');
 			}else{
 				response.redirect('/');
+			}
+  		} catch (err) {
+    	console.error(err);
+  		} finally {
+    	if (connection) {
+      	try {
+        	await connection.close();
+      	} catch (err) {
+        	console.error(err);
+      	}
+    	}
+  		}
+		response.end();
+	} else {
+		response.redirect('/');
+		response.end();
+	}
+});
+
+app.post('/signUp', async function(request, response) {
+	var username = request.body.correo;
+	var contrasena = request.body.contrasena;
+	var nombre = request.body.nombreusuario;
+	var ap_mat = request.body.apMat;
+	var ap_pat = request.body.apPat;
+	if (username && contrasena) {
+		sql = "SELECT COUNT(*) AS USUARIO FROM USUARIO WHERE EMAIL = '"+username+"'";
+		console.log(sql);
+		try {
+			connection =  await oracledb.getConnection(  {
+     		user          : "CG_PROY_ADMIN",
+      		password      : "samjor",
+  			connectString : "cursodb.c7rbflvluzyk.us-east-2.rds.amazonaws.com:1521/SCOOTERS"
+		});
+		connection2 =  await oracledb.getConnection(  {
+			user          : "CG_PROY_ADMIN",
+			 password      : "samjor",
+			 connectString : "cursodb.c7rbflvluzyk.us-east-2.rds.amazonaws.com:1521/SCOOTERS"
+	   });
+
+			const result = await connection.execute(sql);
+			const resultado = result.rows[0]['USUARIO'];
+			if (resultado == 1) {
+				console.log('No puedes registrar ese usuario, ya existe en la base');
+				response.redirect('/registro');
+			}else{
+				var sqlInsert = "INSERT INTO USUARIO VALUES (SEQ_USUARIO.NEXTVAL,'"+username+"','"+nombre+"','"+ap_pat+"','"+ap_mat+"','"+md5(contrasena)+"',0)";
+				console.log(sqlInsert);
+				await connection2.execute(sqlInsert,{},{autoCommit:true},
+					function (err, result) {
+					if (err) {
+						console.error(err.message);
+						return;
+					}
+					response.redirect('/');
+					return
+					});
 			}
   		} catch (err) {
     	console.error(err);
