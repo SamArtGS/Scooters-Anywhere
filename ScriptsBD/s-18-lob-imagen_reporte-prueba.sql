@@ -4,4 +4,4 @@
 -- Fecha:     04 de Junio del 2020
 
 
-select dbms_lob.getlength(dbst_load_a_file('hola.png')) from dual;
+select dbms_lob.getlength(dbst_load_a_file('scooter.png')) len_blob from dual;

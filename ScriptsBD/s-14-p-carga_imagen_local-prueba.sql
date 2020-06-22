@@ -4,4 +4,5 @@
 -- Fecha:     04 de Junio del 2020
 
 
-select dbms_lob.getlength(f_clob('Hola')) as clob_chunk from dual;
+column filename format a20
+select * from table (rdsadmin.rds_file_util.listdir(p_directory => 'BLOB_DIR'));
