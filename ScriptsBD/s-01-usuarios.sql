@@ -34,6 +34,7 @@ grant create session, create table, create view, create
   sequence,create synonym,create database link, 
   create trigger,create procedure,DROP ANY DIRECTORY to rol_admin;
 GRANT execute ON rdsadmin.rdsadmin_util TO rol_admin;
+grant execute on rdsadmin.rds_file_util to rol_admin
 GRANT CREATE PUBLIC SYNONYM TO rol_admin;
 create role rol_invitado;
 grant create session, create synonym ,create view to rol_invitado;

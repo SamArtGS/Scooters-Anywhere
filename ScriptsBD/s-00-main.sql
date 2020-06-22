@@ -14,6 +14,7 @@ PROMPT GENERANDO LOS USUARIOS
 PROMPT CREACIÓN DE USUARIOS          -> OK!
 
 connect cg_proy_admin/samjor
+exec rdsadmin.rdsadmin_util.create_directory('BLOB_DIR');
 prompt CONECTADO A CG_PROY_ADMIN
 
 PROMPT ==============================================

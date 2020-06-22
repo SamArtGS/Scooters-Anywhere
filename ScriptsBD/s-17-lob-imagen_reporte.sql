@@ -3,55 +3,27 @@
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
 
-/*
-Archivos Locales
-conn sys as sysdba
-CREATE OR REPLACE DIRECTORY BLOB_DIR AS '/tmp/';
-grant read, write on directory BLOB_DIR to CG_PROY_ADMIN
-conn CG_PROY_ADMIN/samjor
-
-*/
--- Archivos de Texto en AWS:
-BEGIN
-  RDSADMIN.RDSADMIN_UTIL.CREATE_DIRECTORY('BLOB_DIR');
-END;
-/
-DECLARE
-  fHandle  UTL_FILE.FILE_TYPE;
-BEGIN
-  fHandle := UTL_FILE.FOPEN('BLOB_DIR', 'hola.png', 'w');
-  UTL_FILE.PUT_LINE(fHandle, 'This is the first line' );
-  UTL_FILE.PUT_LINE(fHandle, 'This is the second line');
-  UTL_FILE.PUT_LINE(fHandle, 'This is the third line' );
-  UTL_FILE.FCLOSE(fHandle);
-END;
-/
-
 create or replace function dbst_load_a_file(
   p_file_name in varchar2
-) return clob
+) return blob
 as
-    l_clob    clob;
-    l_bfile   bfile;
-    dst_offset  number := 1 ;
-    src_offset  number := 1 ;
-    lang_ctx    number := DBMS_LOB.DEFAULT_LANG_CTX;
-    warning     number;
+    v_clob    blob;
+    v_bfile   bfile;
+    v_dst_offset  number := 1;
+    v_src_offset  number := 1;
 begin
-    l_bfile := bfilename( 'BLOB_DIR', p_file_name );
-    dbms_lob.fileopen( l_bfile );
-    dbms_lob.createtemporary(l_clob, true);
-    dbms_lob.loadclobfromfile(
-      DEST_LOB     => l_clob
-    , SRC_BFILE    => l_bfile
-    , AMOUNT       => dbms_lob.getlength( l_bfile )
-    , DEST_OFFSET  => dst_offset
-    , SRC_OFFSET   => src_offset
-    , BFILE_CSID   => DBMS_LOB.DEFAULT_CSID
-    , LANG_CONTEXT => lang_ctx
-    , WARNING      => warning);
-    dbms_lob.fileclose( l_bfile );
-    return l_clob;
+    v_bfile := bfilename('BLOB_DIR', p_file_name);
+    dbms_lob.open(v_bfile, dbms_lob.lob_readonly);
+    dbms_lob.createtemporary(v_clob, true);
+    dbms_lob.loadblobfromfile(
+      dest_lob    => v_clob,
+      src_bfile   => v_bfile,
+      amount      => dbms_lob.getlength(v_bfile),
+      dest_offset => v_dst_offset,
+      src_offset  => v_src_offset
+    );
+    dbms_lob.fileclose( v_bfile );
+    return v_clob;
 end;
 /
-
+show errors;
