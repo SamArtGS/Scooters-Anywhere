@@ -88,10 +88,10 @@ PROMPT ========================= CONSULTAS ==========================
 @s-10-consultas.sql
 
 
-@s-13-p-actualizar_status.sql
+--@s-13-p-actualizar_status.sql
 
 
-@s-14-p-actualizar_status-prueba.sql
+--@s-14-p-actualizar_status-prueba.sql
 
 
 

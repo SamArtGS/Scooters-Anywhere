@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
     <head>
   <meta charset="utf-8" />
@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="/img/favicons.png" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-  <title>Clínica San Luis Huexotla</title>
+  <title>SCOOTERS ANYWHERE</title>
 
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 
@@ -16,12 +16,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
 
   <!-- CSS Files -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
-
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"  />
+    <link href="/css/material-kit.css?v=1.2.1" rel="stylesheet" type="text/css" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="/assets-for-demo/vertical-nav.css" rel="stylesheet" />
-  <link href="/assets-for-demo/demo.css" rel="stylesheet" />
+  <link href="/assets-for-demo/vertical-nav.css" rel="stylesheet" type="text/css"  />
+  <link href="/assets-for-demo/demo.css" rel="stylesheet"  type="text/css" />
 
 </head>
 
@@ -38,35 +37,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="presentation.html">🛴Scooters Anywhere</a> 
+            <a class="navbar-brand" href="/">🛴Scooters Anywhere</a> 
           </div>
-
-
 
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-
-
-
-
            <li>
-                <a href="Ubicacion.html">
+                <a href="ubicacion">
                   <i class="material-icons">map</i> Ubicación Scooters
                 </a>
               </li>
-
-
-
             <li>
-            <a href="index.html">
+            <a href="/">
               <i class="material-icons">admin_panel_settings</i>Seguridad
-            </a>
-            </li>
-
-
-            <li>
-            <a href="index.html">
-              <i class="material-icons">loyalty</i> Ayuda
             </a>
             </li>
 
@@ -97,16 +80,11 @@
               </li>
 
 
-
-
               <li>
                 <a href="sections.html#blogs">
                   <i class="material-icons">contact_phone</i>Ayuda
                 </a>
               </li>
-
-
-
             </ul>
           </li>
 
@@ -152,24 +130,50 @@
           </div>
       </div>
     </nav>
-  <div class="page-header header-filter " data-parallax="true" style="background-image: url('fondo.jpg');">
-    <div class="cd-section" >
-       <div class="row">
+<div class="page-header header-filter" style="background-image: url('/fondo.jpg');height: 100vh; background-position: top center;">
+    <div class="container">
+    <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center">
-            <h3 class="title"> </h3>
-                      <h4></h4>
+            <h3 class="title">Iniciar sesión</h3>
+                      <h4>Ingrese sus datos por favor</h4>
                 </div>
             </div>
-            
-          <div class="row" style="margin-top: 80px">
-          </div>
-            <div class="main main-raised">
-              
-                <div class="contactus-2">
-                <div id="contactUs2Map" class="map" style="overflow:hidden;height:42em;"></div>
+  
+
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+          <div class="card card-signup">
+            <form class="form" action ="auth" method="POST">
+              <div class="card-content">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">face</i>
+                  </span>
+                  <div class="form-group label-floating">
+                <label class="control-label">Correo electrónico</label>
+                <input type="email" name="username" class="form-control" required>
               </div>
                 </div>
+
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="material-icons">lock_outline</i>
+                  </span>
+                  <div class="form-group label-floating">
+                <label class="control-label">Contraseña</label>
+                <input type="password" name="password" class="form-control" required>
+              </div>
+                </div>
+              </div>
+              <div class="footer text-center">
+                <button type="submit" class="btn btn-info">Entrar</button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
+    </div>
+
   </div>
             
 </body>

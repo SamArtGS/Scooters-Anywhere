@@ -1,12 +1,10 @@
-# Página Web - ⚕︎ Clínica San Luis Huexotla ⚕︎
+# Página Web - Scooters Anywhere
 
+### Proyecto Final Base de Datos
 
-### Proyecto final - Ingeniería de Software
 
 #### Integrantes: 
 
 - Garrido Sánchez Samuel Arturo
-- Monsalvo Bolaños Melissa Monserrat
-- Martínez Gutiérrez Carlos Giovanni
 - Cárdenas Cárdenas Jorge
-- Velázquez de León Lavarrios Alvar
+
