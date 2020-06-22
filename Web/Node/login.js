@@ -45,8 +45,6 @@ app.get('/ubicacion',function(request,response){
 
 app.get('/dashboard', function(request, response) {
 	session = request.session;
-
-
 	response.sendFile(path.join(__dirname + '/dashboard.html'));
 });
 
@@ -80,8 +78,9 @@ app.post('/auth', async function(request, response) {
 				request.session.loggedin = true;
 				request.session.username = username;
 				response.redirect('/dashboard');
+				
 			}else{
-				response.redirect('/');
+				response.redirect('/?info=' + encodeURIComponent('Incorrect_Credential'));
 			}
   		} catch (err) {
     	console.error(err);
@@ -122,38 +121,31 @@ app.post('/signUp', async function(request, response) {
 			 connectString : "cursodb.c7rbflvluzyk.us-east-2.rds.amazonaws.com:1521/SCOOTERS"
 	   });
 
-			const result = await connection.execute(sql);
-			const resultado = result.rows[0]['USUARIO'];
-			if (resultado == 1) {
-				console.log('No puedes registrar ese usuario, ya existe en la base');
-				response.redirect('/registro');
-			}else{
-				var sqlInsert = "INSERT INTO USUARIO VALUES (SEQ_USUARIO.NEXTVAL,'"+username+"','"+nombre+"','"+ap_pat+"','"+ap_mat+"','"+md5(contrasena)+"',0)";
-				console.log(sqlInsert);
-				await connection2.execute(sqlInsert,{},{autoCommit:true},
-					function (err, result) {
-					if (err) {
-						console.error(err.message);
-						return;
-					}
-					response.redirect('/');
-					return
-					});
+		const result = await connection.execute(sql);
+		const resultado = result.rows[0]['USUARIO'];
+		if (resultado == 1) {
+			response.redirect('/info?error=' + encodeURIComponent('Incorrect_params'));
+		}else{
+			var sqlInsert = "INSERT INTO USUARIO VALUES (SEQ_USUARIO.NEXTVAL,'"+username+"','"+nombre+"','"+ap_pat+"','"+ap_mat+"','"+md5(contrasena)+"',0)";
+			console.log(sqlInsert);
+			await connection2.execute(sqlInsert,{},{autoCommit:true},
+				function (err, result) {
+				if (err) {
+					console.error(err.message);
+					
+					response.end();
+				}else{
+					console.log('Usuario registrado con éxito');
+					response.redirect('/?info=' + encodeURIComponent('signedup'));
+					response.end();
+				}
+				});
 			}
+			await connection.close();
   		} catch (err) {
-    	console.error(err);
-  		} finally {
-    	if (connection) {
-      	try {
-        	await connection.close();
-      	} catch (err) {
-        	console.error(err);
-      	}
-    	}
+    		console.error(err);
   		}
-		response.end();
 	} else {
-		response.redirect('/');
 		response.end();
 	}
 });
