@@ -4,10 +4,12 @@
 -- Fecha:     04 de Junio del 2020
 
 
-whenever sqlerror exit
+whenever sqlerror exit rollback;
 set feedback off
 
 Prompt Conectando como administrador
+
+--connect sys/proteco123 as sysdba;
 connect scooters_admin/samjor123
 
 -----------------------------Código de Limpieza--------------------------------
@@ -40,11 +42,11 @@ grant create session, create synonym ,create view to rol_invitado;
 
 
 --Creando Usuarios
-create user cg_proy_admin identified by samjor quota unlimited on users;
-create user cg_proy_invitado identified by samjor quota unlimited on users;
+create user prueba_sam_admin identified by samjor quota unlimited on users;
+create user prueba_sam_invitado identified by samjor quota unlimited on users;
 
 -- Asignando roles
-grant rol_admin to cg_proy_admin;
-grant rol_invitado to cg_proy_invitado;
+grant rol_admin to prueba_sam_admin;
+grant rol_invitado to prueba_sam_invitado;
 
 whenever sqlerror continue

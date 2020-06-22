@@ -53,7 +53,7 @@ begin
   dbms_output.put_line('Scooter_id     ->     Nivel de Bateria');
   for r in cur_scooters_carga loop
     v_bateria_actual := dbms_random.value(20, 40);
-    actualiza_status(r.scooter_id, 7); -- Servicio Carga
+    sp_actualiza_status(r.scooter_id, 7); -- Servicio Carga
     -- insert into recarga_scooter (servicio_id, scooter_id, nivel_carga)
     -- values (seq_servicio.currval, r.scooter_id, v_bateria_actual);
     dbms_output.put_line(lpad(to_char(r.scooter_id), 10)

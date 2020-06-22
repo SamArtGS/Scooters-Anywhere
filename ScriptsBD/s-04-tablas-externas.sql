@@ -5,7 +5,7 @@
 
 
 
-
+/*
 drop database link db2_dblink;
 create database link db2_dblink
   connect to CG_PROY_ADMIN identified by samjor
@@ -52,6 +52,7 @@ BEGIN
   END IF;
 END;
 /
+--CREATE OR REPLACE DIRECTORY TABEXT AS '/usr/bin/proyectoBD';
 exec rdsadmin.rdsadmin_util.create_directory('TABEXT');
 DECLARE
   lfh utl_file.file_type;

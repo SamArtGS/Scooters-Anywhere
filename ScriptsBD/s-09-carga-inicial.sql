@@ -28,11 +28,12 @@ PROMPT - INSERTANDO LOS TELÉFONOS DE LAS MARCAS
 
 @s-09-carga-inicial-telefono-marca.sql
 
-PROMPT INSERTANDO SCOOTERS
+PROMPT - INSERTANDO SCOOTERS
 
 @s-09-carga-inicial-scooters.sql
 
 alter session set nls_date_format="yyyy-mm-dd hh24:mi:ss";
+
 PROMPT - INSERTANDO UBICACION DE SCOOTERS
 
 @s-09-carga-inicial-ubicaciones.sql
@@ -42,40 +43,38 @@ PROMPT - INSERTANDO ZONA_SCOOTERS
 @s-09-carga-inicial-zona_scooter.sql
 
 alter session set nls_date_format="dd/mm/yyyy hh24:mi:ss";
-PROMPT INSERTANDO SERVICIOS
+PROMPT - INSERTANDO SERVICIOS
 
 @s-09-carga-inicial-servicio.sql
 
-PROMPT INSERTANDO SERVICIO RENTA
+PROMPT - INSERTANDO SERVICIO RENTA
 
 @s-09-carga-inicial-servicio_renta.sql
 
-PROMPT INSERTANDO SERVICIO VIAJE
+PROMPT - INSERTANDO SERVICIO VIAJE
 
 @s-09-carga-inicial-servicio_viaje.sql
 
-PROMPT INSERTANDO SERVICIO RECARGA
+PROMPT - INSERTANDO SERVICIO RECARGA
 
 @s-09-carga-inicial-servicio_recarga.sql
 
-PROMPT INSERTANDO RECARGA SCOOTER
+PROMPT - INSERTANDO RECARGA SCOOTER
 
 @s-09-carga-inicial-recarga_scooter.sql
 
-PROMPT INSERTANDO HISTORIAL STATUS SCOOTER
+PROMPT - INSERTANDO HISTORIAL STATUS SCOOTER
 
 @s-09-carga-inicial-hist_scooter_status.sql
 
-PROMPT INSERTANDO REPORTES DE FALLA
+PROMPT - INSERTANDO REPORTES DE FALLA
 
 @s-09-carga-inicial-reporte_fallas.sql
 
-PROMPT INSERTANDO IMAGENES DE LOS REPORTES
+PROMPT - INSERTANDO IMAGENES DE LOS REPORTES
 
 @s-09-carga-inicial-imagen_reporte.sql
 
-
-PROMPT INSERTANDO REPORTES DE FALLAS
 
 commit;
 PROMPT LISTO! :)
