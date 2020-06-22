@@ -36,18 +36,18 @@ grant create session, create table, create view, create
   sequence,create synonym,create database link, 
   create trigger,create procedure,DROP ANY DIRECTORY to rol_admin;
 GRANT execute ON rdsadmin.rdsadmin_util TO rol_admin;
-grant execute on rdsadmin.rds_file_util to rol_admin
+grant execute on rdsadmin.rds_file_util to rol_admin;
 GRANT CREATE PUBLIC SYNONYM TO rol_admin;
 create role rol_invitado;
 grant create session, create synonym ,create view to rol_invitado;
 
 
 --Creando Usuarios
-create user prueba_sam_admin identified by samjor quota unlimited on users;
-create user prueba_sam_invitado identified by samjor quota unlimited on users;
+create user CG_PROY_ADMIN identified by samjor quota unlimited on users;
+create user CG_PROY_INVITADO identified by samjor quota unlimited on users;
 
 -- Asignando roles
-grant rol_admin to prueba_sam_admin;
-grant rol_invitado to prueba_sam_invitado;
+grant rol_admin to CG_PROY_ADMIN;
+grant rol_invitado to CG_PROY_INVITADO;
 
 whenever sqlerror continue

@@ -16,12 +16,8 @@ PROMPT GENERANDO LOS USUARIOS
 
 PROMPT CREACIÓN DE USUARIOS          -> OK!
 
-<<<<<<< HEAD
-connect prueba_sam_admin/samjor
-=======
 connect cg_proy_admin/samjor
 exec rdsadmin.rdsadmin_util.create_directory('BLOB_DIR');
->>>>>>> beffab61e08a7f01ac1c58e9e13b61c099876734
 prompt CONECTADO A CG_PROY_ADMIN
 
 PROMPT ==============================================
@@ -68,7 +64,7 @@ PROMPT ==============================================
 
 PROMPT GENERANDO SINÓNIMOS
 
---@s-07-sinonimos.sql
+@s-07-sinonimos.sql
 
 PROMPT CREACIÓN DE SINÓNIMOS.              -> OK!
 
@@ -84,7 +80,7 @@ PROMPT ==============================================================
 
 PROMPT GENERANDO CARGAS INICIALES (ATENCIÓN: TARDA UNOS MINUTOS!)
 
---@s-09-carga-inicial.sql
+@s-09-carga-inicial.sql
 
 PROMPT CARGA DE DATOS COMPLETA.      -> OK!
 
