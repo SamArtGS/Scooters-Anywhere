@@ -12,6 +12,8 @@ set serveroutput on
 declare
   v_reporte_falla_id  number(10,0);
   v_count             number(1,0);
+  v_num_imagenes      number(1,0);
+  v_count_imagenes    number(1,0) := 0;
 begin
   begin
     sp_crear_reporte_falla(
@@ -94,9 +96,10 @@ begin
       end if;
   end;
   -- Cargando imagenes en la tabla temporal
-  for i in 1..dbms_random.value(0,5) loop
+  v_num_imagenes := dbms_random.value(0,5);
+  for i in 1..v_num_imagenes loop
     insert into t_imagen_reporte (usuario_id, scooter_id, imagen)
-    values(100, 100, 'Hola');
+    values(100, 100, 'scooter.png');
   end loop;
   sp_crear_reporte_falla(
     p_descripcion       =>  'Probando Reporte de Fallas',
@@ -111,6 +114,17 @@ begin
     dbms_output.put_line('Validación 6, Reporte Registrado en la tabla REPORTE_FALLA            ->  ERROR.');
   else
     dbms_output.put_line('Validación 6, Reporte Registrado en la tabla REPORTE_FALLA            ->     OK.');
+  end if;
+  for r in (select imagen from imagen_reporte 
+  where reporte_falla_id = v_reporte_falla_id) loop
+    if dbms_lob.getlength(r.imagen) != 0 then
+      v_count_imagenes := v_count_imagenes + 1;      
+    end if;
+  end loop;
+  if v_count_imagenes = v_num_imagenes then
+    dbms_output.put_line('Validación 7, Imageneres registradas en la tabla IMAGEN_REPORTE       ->     OK.');
+  else
+    dbms_output.put_line('Validación 7, Imageneres registradas en la tabla IMAGEN_REPORTE       ->  ERROR.');
   end if;
 end;
 /
