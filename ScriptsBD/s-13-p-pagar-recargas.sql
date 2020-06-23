@@ -9,11 +9,12 @@ set serveroutput on
 
 
 create or replace procedure sp_pagar_recargas(
-  p_servicio_id     number
+  p_servicio_id     in  number
 ) is
   v_validador       number(1);
   v_num_recargas    number(2,0) := 0;
   v_tipo_servicio   char(1);
+  v_precio_actual   number(8,3);
   v_precio          number(8,3) := 0;
   cursor cur_scooters is
     select rs.nivel_carga
@@ -44,16 +45,23 @@ begin
       || v_tipo_servicio || '.'
     );
   end if;
+  select precio into v_precio_actual
+  from servicio
+  where servicio_id = p_servicio_id;
+  if v_precio_actual != -1 then
+    raise_application_error(-20002, 'ERROR: El Servicio ya ha sido pagado al usuario');
+  end if;
   for r in cur_scooters loop
     v_num_recargas :=  v_num_recargas + 1;
     v_precio := v_precio + r.nivel_carga * 2;
   end loop;
   if v_num_recargas = 0 then
-    raise_application_error(-20000, 'ERROR: No se encontro ningun scooter asociado al servicio.');
+    raise_application_error(-20003, 'ERROR: No se encontro ningun scooter asociado al servicio.');
   end if;
   update servicio
   set precio = v_precio
   where servicio_id = p_servicio_id;
+  dbms_output.put_line('PAGO POR CONCEPTO DE RECARGAS DE SCOOTERS');
   dbms_output.put_line('================================================================================');
   dbms_output.put_line('Servicio: ' || p_servicio_id);
   for r in cur_usuario loop

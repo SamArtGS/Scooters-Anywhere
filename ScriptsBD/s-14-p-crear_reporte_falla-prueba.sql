@@ -34,15 +34,15 @@ begin
   begin
     sp_crear_reporte_falla(
       p_descripcion       =>  'Probando Reporte de Fallas',
-      p_usuario_id        =>  null,
+      p_usuario_id        =>  -1,
       p_scooter_id        =>  1,
       p_reporte_falla_id  =>  v_reporte_falla_id
     );
-    dbms_output.put_line('Validación 2, P_USUARIO_ID no acepta valores nulos                    ->  ERROR.');
+    dbms_output.put_line('Validación 2, P_USUARIO_ID debe ser un usuario valido                 ->  ERROR.');
   exception
     when others then
       if(sqlcode = -20000) then
-        dbms_output.put_line('Validación 2, P_USUARIO_ID no acepta valores nulos                    ->     OK.');
+        dbms_output.put_line('Validación 2, P_USUARIO_ID debe ser un usuario valido                 ->     OK.');
       else
         raise;
       end if;
