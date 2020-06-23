@@ -1,6 +1,7 @@
---@Autor: Jorge Cárdenas Cárdenas - Samuel Arturo Garrido Sanchez
---@Fecha creación: 05/06/2020
---@Descripción: Proyecto, Consultas
+-- Companía:  Scooters Anywhere
+-- Project:   Modelo Proyecto Final
+-- Author:    Cárdenas Jorge y Garrido Samuel 
+-- Fecha:     04 de Junio del 2020
 
 
 set linesize 200
