@@ -4,10 +4,12 @@
 -- Fecha:     04 de Junio del 2020
 
 
-whenever sqlerror exit
+whenever sqlerror exit rollback;
 set feedback off
 
 Prompt Conectando como administrador
+
+--connect sys/proteco123 as sysdba;
 connect scooters_admin/samjor123
 
 -----------------------------Código de Limpieza--------------------------------
@@ -34,18 +36,18 @@ grant create session, create table, create view, create
   sequence,create synonym,create database link, 
   create trigger,create procedure,DROP ANY DIRECTORY to rol_admin;
 GRANT execute ON rdsadmin.rdsadmin_util TO rol_admin;
-grant execute on rdsadmin.rds_file_util to rol_admin
+grant execute on rdsadmin.rds_file_util to rol_admin;
 GRANT CREATE PUBLIC SYNONYM TO rol_admin;
 create role rol_invitado;
 grant create session, create synonym ,create view to rol_invitado;
 
 
 --Creando Usuarios
-create user cg_proy_admin identified by samjor quota unlimited on users;
-create user cg_proy_invitado identified by samjor quota unlimited on users;
+create user CG_PROY_ADMIN identified by samjor quota unlimited on users;
+create user CG_PROY_INVITADO identified by samjor quota unlimited on users;
 
 -- Asignando roles
-grant rol_admin to cg_proy_admin;
-grant rol_invitado to cg_proy_invitado;
+grant rol_admin to CG_PROY_ADMIN;
+grant rol_invitado to CG_PROY_INVITADO;
 
 whenever sqlerror continue

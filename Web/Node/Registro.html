@@ -130,6 +130,15 @@
     </nav>
 <div class="page-header header-filter" style="background-image: url('/fondo.jpg');height: 100vh; background-position: top center;">
     <div class="container">
+        <div class="alert alert-danger" role="alert" id="loginAlert">
+            <div class="alert-icon">
+                <i class="material-icons">error_outline</i>
+              </div>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+              </button>
+              <b>Error: </b> No se pudo insertar su nuevo usuario.
+        </div>
     <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center">
             <h3 class="title">Regístrate</h3>
@@ -274,6 +283,14 @@
       materialKit.initFormExtendedDatetimepickers();
 
     });
+  </script>
+  <script>
+      $('#loginAlert').hide();
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get('error');
+      if(myParam == "Incorrect_params") {
+          $('#loginAlert').show();
+      }
   </script>
 
   <script type="text/javascript">

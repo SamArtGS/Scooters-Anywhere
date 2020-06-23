@@ -3,6 +3,9 @@
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
 
+whenever sqlerror exit rollback;
+set feedback off
+
 PROMPT ==============================================
 PROMPT BIENVENIDO! - SAMUEL Y JORGE :)
 PROMPT ==============================================
@@ -63,7 +66,7 @@ PROMPT GENERANDO SINÓNIMOS
 
 @s-07-sinonimos.sql
 
-PROMPT CREACIÓN DE SINÓNIMOS.           -> OK!
+PROMPT CREACIÓN DE SINÓNIMOS.              -> OK!
 
 PROMPT ==============================================
 
@@ -83,20 +86,9 @@ PROMPT CARGA DE DATOS COMPLETA.      -> OK!
 
 PROMPT ==============================================================
 
-PROMPT ========================= CONSULTAS ==========================
-
-@s-10-consultas.sql
-
-
---@s-13-p-actualizar_status.sql
-
-
---@s-14-p-actualizar_status-prueba.sql
-
-
-
 PROMPT
 PROMPT
-PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = =
-PROMPT PROYECTO FINAL BD - SAMUEL Y JORGE FINALIZADO!
-PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = =
+PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+PROMPT PROYECTO FINAL BD - SAMUEL Y JORGE - PRIMERA PARTE FINALIZADO !
+PROMPT = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+PROMPT
