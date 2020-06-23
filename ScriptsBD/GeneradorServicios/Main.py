@@ -246,7 +246,7 @@ class Recarga_Scooter():
     self.servicio = servicio
   
   def writeRecargaScooter(self):
-    file = open("../s-09-carga-inicial-recarga-scooter.sql", "a")
+    file = open("../s-09-carga-inicial-recarga_scooter.sql", "a")
     file.write('INSERT INTO RECARGA_SCOOTER (SERVICIO_ID, SCOOTER_ID, '
       +'NIVEL_CARGA) VALUES('
       + str(self.servicio.servicio_id) + ", "

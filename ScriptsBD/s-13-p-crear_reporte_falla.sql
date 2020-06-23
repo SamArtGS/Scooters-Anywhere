@@ -45,7 +45,7 @@ begin
   p_descripcion, p_usuario_id, p_scooter_id);
   for r in cur_imagenes loop
     insert into imagen_reporte (imagen_reporte_id, imagen, reporte_falla_id)
-    values (seq_imagen_reporte.nextval, base64decode(r.imagen), 
+    values (seq_imagen_reporte.nextval, dbst_load_a_file(r.imagen),
       seq_reporte_falla.currval);
     v_count_img := v_count_img + 1;
     exit when v_count_img = 5; 

@@ -12,11 +12,9 @@ declare
   v_scooter_id  scooter.scooter_id%type; -- Scooter de prueba
   v_status_id   status.status_id%type;   -- Status esperado
 begin
-  dbms_output.put_line('==================================================='
-    || '============================');
+  dbms_output.put_line('================================================================================');
   dbms_output.put_line('Realizando Validación del Procediento: sp_actualiza_status');
-  dbms_output.put_line('==================================================='
-    || '============================');
+  dbms_output.put_line('================================================================================');
   select scooter_id into v_scooter_id
   from scooter
   where status_id = 2
@@ -30,12 +28,10 @@ begin
     from scooter
     where scooter_id = v_scooter_id;
     if v_status_id != 4 then
-      dbms_output.put_line('Validación 1, '
-      || 'verficando nuevo status en la tabla Scooter   ->  ERROR.');
+      dbms_output.put_line('Validación 1, verficando nuevo status en la tabla Scooter             ->  ERROR.');
       raise_application_error(-20050, 'El status no corresponde con el status esperado');
     end if;
-    dbms_output.put_line('Validación 1, '
-      || 'verficando nuevo status en la tabla Scooter               ->  OK.');
+    dbms_output.put_line('Validación 1, verficando nuevo status en la tabla Scooter             ->     OK.');
   exception
     when others then
       raise;
@@ -50,12 +46,10 @@ begin
         where scooter_id = v_scooter_id
       );
     if v_status_id != 4 then
-      dbms_output.put_line('Validación 2, '
-      || 'verficando nuevo status en la tabla hist_scooter_status   ->  ERROR.');
+      dbms_output.put_line('Validación 2, verficando nuevo status en la tabla hist_scooter_status ->  ERROR.');
       raise_application_error(-20050, 'El status no corresponde con el status esperado');
     end if;
-    dbms_output.put_line('Validación 2, '
-      || 'verficando nuevo status en la tabla hist_scooter_status   ->  OK.');
+    dbms_output.put_line('Validación 2, verficando nuevo status en la tabla hist_scooter_status ->     OK.');
   exception
     when others then
       raise;

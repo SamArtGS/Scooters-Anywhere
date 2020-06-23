@@ -64,6 +64,6 @@ show errors;
 
 declare
 begin
-  sp_cargar_imagenes('scooter.png');
+  sp_cargar_imagenes('scooter.jpg');
 end;
 /
