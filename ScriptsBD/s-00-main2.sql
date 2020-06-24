@@ -32,9 +32,9 @@ PROMPT - - - - - - - - - - - - - -
 PROMPT
 @s-12-tr-trigger3-prueba.sql
 
-PROMPT - - - - - - - - - - - - - -
+PROMPT COMPOUND TR - - - - - - - - - - - - - -
 
---@s-11-tr-trigger4.sql
+@s-11-tr-trigger4.sql
 --@s-12-tr-trigger4-prueba.sql
 
 PROMPT - - - - - - - - - - - - - -
