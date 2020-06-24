@@ -58,7 +58,7 @@ begin
     v_precio := v_precio + r.nivel_carga * 2;
   end loop;
   if v_num_recargas = 0 then
-    raise_application_error(-20003, 'ERROR: No se encontro ningun scooter asociado al servicio.');
+    raise_application_error(-20003, 'ERROR: No se encontro ningun scooter asociado al servicio.' || p_servicio_id);
   end if;
   update servicio
   set precio = v_precio
@@ -78,12 +78,3 @@ begin
 end;
 /
 show errors;
-
-declare
-begin
-  sp_pagar_recargas(
-    p_servicio_id   =>  631
-  );
-end;
-/
-rollback;
