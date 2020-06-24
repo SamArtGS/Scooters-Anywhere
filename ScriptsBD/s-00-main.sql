@@ -17,6 +17,17 @@ PROMPT GENERANDO LOS USUARIOS
 PROMPT CREACIÓN DE USUARIOS          -> OK!
 
 connect cg_proy_admin/samjor
+DECLARE
+ file_exists NUMBER := 0;
+BEGIN
+  file_exists := DBMS_LOB.FILEEXISTS(BFILENAME('BLOB_DIR','.'));
+  IF ( file_exists = 1 ) THEN
+    EXECUTE IMMEDIATE 'DROP DIRECTORY BLOB_DIR';
+  ELSE
+    NULL;
+  END IF;
+END;
+/
 exec rdsadmin.rdsadmin_util.create_directory('BLOB_DIR');
 prompt CONECTADO A CG_PROY_ADMIN
 
@@ -80,7 +91,7 @@ PROMPT ==============================================================
 
 PROMPT GENERANDO CARGAS INICIALES (ATENCIÓN: TARDA UNOS MINUTOS!)
 
-@s-09-carga-inicial.sql
+--@s-09-carga-inicial.sql
 
 PROMPT CARGA DE DATOS COMPLETA.      -> OK!
 
