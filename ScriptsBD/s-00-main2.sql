@@ -3,8 +3,8 @@
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
 
-whenever sqlerror exit rollback;
---set feedback off
+whenever sqlerror continue;
+set feedback off
 
 PROMPT =======================================================================
 PROMPT ========================= CONSULTAS ===================================
@@ -34,8 +34,8 @@ PROMPT
 
 PROMPT - - - - - - - - - - - - - -
 
---@s-11-tr-trigger4.sql
---@s-12-tr-trigger4-prueba.sql
+@s-11-tr-trigger4.sql
+@s-12-tr-trigger4-prueba.sql
 
 PROMPT - - - - - - - - - - - - - -
 
@@ -57,7 +57,7 @@ PROMPT
 PROMPT - - - - - - - - - - - - - - 
 
 PROMPT EJECUTE EL SCRIPT s-13-p-carga_imagen_local.sql
-ACCEPT CHOICE PROMPT Press enter to continue 
+pause Press Enter to Continue 
 PROMPT
 @s-14-p-carga_imagen_local-prueba.sql
 
@@ -82,3 +82,6 @@ PROMPT ========================= FUNCIONES ==================================
 
 @s-16-fx-funciones-pruebas.sql
 PROMPT FUNCIONES CARGADAS Y VERIFICADAS.       -> OK!
+PROMPT ======================================================================
+PROMPT ==================== RESULTADOS FINALES ==============================
+@resultados-proyecto-final.sql
