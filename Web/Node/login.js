@@ -22,7 +22,7 @@ app.use(session({
 	secret: 'proyectoBD',
 	resave: true,
 	saveUninitialized: true,
-	cookie: { maxAge: 300000 }
+	cookie: { maxAge: 3000000 }
 }));
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 oracledb.autoCommit = true;
