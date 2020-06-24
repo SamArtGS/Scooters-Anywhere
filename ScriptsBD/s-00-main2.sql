@@ -85,4 +85,6 @@ PROMPT ========================= FUNCIONES ==================================
 PROMPT FUNCIONES CARGADAS Y VERIFICADAS.       -> OK!
 PROMPT ======================================================================
 PROMPT ==================== RESULTADOS FINALES ==============================
+
+
 @resultados-proyecto-final.sql

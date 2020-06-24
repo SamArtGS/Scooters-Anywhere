@@ -1,6 +1,9 @@
 --@Autor(es):       Jorge Rodríguez
 --@Fecha creación:  
 --@Descripción:     Script validacion proyecto final
+--@Autor(es):       Jorge Rodríguez
+--@Fecha creación:  
+--@Descripción:     Script validacion proyecto final
 set serveroutput on
 declare
     v_num_tablas number(10,0);
@@ -45,11 +48,11 @@ declare
     cursor cur_usuarios is select username,created from all_users 
         where username like '%_PROY_USER%' or username like '%_PROY_ADMIN%';
 begin
-	--tablas 
+    --tablas 
     select count(*) into v_num_tablas_temp from user_tables where temporary='Y';
     select count(*) into v_num_tablas_externas from user_external_tables;
-   	--secuencias
-   	select count(*) into v_num_sequences from user_sequences;    
+    --secuencias
+    select count(*) into v_num_sequences from user_sequences;    
     --columnas
     select count(*) into v_num_default from user_tab_cols where data_default is not null and virtual_column='NO';
     select count(*) into v_num_virtual from user_tab_cols where data_default is not null and virtual_column='YES';
@@ -61,16 +64,16 @@ begin
     --indices de PKs
     select count(*) into v_num_index_unique_pk 
     from user_indexes ix, user_constraints uc
-	where ix.index_name = uc.index_name 
-	and uc.constraint_type='P'
-	and ix.uniqueness ='UNIQUE'
-	and ix.index_type='NORMAL';
-	--indices unique no pks
-	select count(*) into v_num_index_unique_non_pk
-	from user_indexes 
-	where uniqueness ='UNIQUE'
-	and index_name not in(select index_name from user_constraints  where index_name is not null) 
-	and index_type ='NORMAL';
+    where ix.index_name = uc.index_name 
+    and uc.constraint_type='P'
+    and ix.uniqueness ='UNIQUE'
+    and ix.index_type='NORMAL';
+    --indices unique no pks
+    select count(*) into v_num_index_unique_non_pk
+    from user_indexes 
+    where uniqueness ='UNIQUE'
+    and index_name not in(select index_name from user_constraints  where index_name is not null) 
+    and index_type ='NORMAL';
 
     --directorios
     select count(*) into v_num_directories from all_directories;
@@ -91,8 +94,8 @@ begin
         fetch cur_tablas into v_nombre_tabla;
         
         execute immediate 'select count(*) into :ph_num_registros '
-        	||' from ' 
-        	||v_nombre_tabla into v_num_registros;
+            ||' from ' 
+            ||v_nombre_tabla into v_num_registros;
 
         exit when cur_tablas%notfound;
         v_num_total_registros:=v_num_registros+v_num_total_registros;
@@ -104,12 +107,7 @@ begin
     open cur_constraints;
     loop
         fetch cur_constraints into v_tipo_constraint,v_num_constraints;
-        exit when cur_constraints%notfoudeclare
-begin
-  sp_pagar_recargas(
-    p_servicio_id   =>  631
-  );
-endnd;
+        exit when cur_constraints%notfound;
         case v_tipo_constraint
            when 'C' then
                 v_num_constraints_c:= v_num_constraints;
@@ -130,7 +128,7 @@ endnd;
     loop
         fetch cur_usuarios into v_username,v_created;
         exit when cur_usuarios%notfound;
-        dbms_output.put_line(v_username||' - '||v_created);
+         dbms_output.put_line(v_username||' - '||v_created);
     end loop;
     close cur_usuarios;  
     
