@@ -218,11 +218,5 @@ app.listen(8000,function(){
 	console.log('Servidor Web - http://localhost:8000');
   });
 
-//////
-/////
-////
-////
-/////
-
 
 
