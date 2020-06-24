@@ -33,8 +33,6 @@ connection = {
       connectString : "cursodb.c7rbflvluzyk.us-east-2.rds.amazonaws.com:1521/SCOOTERS"
 }
 
-//GETS DE ANTES DEL INICIO DE SESIÓN
-
 app.get('/', function(request, response) {
 	response.sendFile(path.join(__dirname + '/IniciarSesion.html'));
 });
@@ -44,13 +42,61 @@ app.get('/ubicacion',function(request,response){
 })
 
 app.get('/dashboard', function(request, response) {
-	session = request.session;
-	response.sendFile(path.join(__dirname + '/dashboard.html'));
+	if (request.session.username == undefined) {  
+          response.sendFile(path.join(__dirname + '/IniciarSesion.html'));
+    }   
+    else{
+        response.sendFile(path.join(__dirname + '/dashboard.html'));
+    }
 });
 
 
 app.get('/registro', function(request, response) {
 	response.sendFile(path.join(__dirname + '/Registro.html'));
+});
+
+app.get('/datos', function(request, response) {
+	if (request.session.username == undefined) {  
+          response.sendFile(path.join(__dirname + '/IniciarSesion.html'));
+    }else{
+	response.sendFile(path.join(__dirname + '/datos.html'));
+}
+});
+
+
+app.get('/serv_viaje', function(request, response) {
+	if (request.session.username == undefined) {  
+          response.sendFile(path.join(__dirname + '/IniciarSesion.html'));
+    } else{
+	response.sendFile(path.join(__dirname + '/servicio_viaje.html'));
+}
+});
+
+
+app.get('/serv_renta', function(request, response) {
+	if (request.session.username == undefined) {  
+          response.sendFile(path.join(__dirname + '/IniciarSesion.html'));
+    } else{
+	response.sendFile(path.join(__dirname + '/servicio_renta.html'));
+}
+});
+
+
+app.get('/serv_recarga', function(request, response) {
+	if (request.session.username == undefined) {  
+          response.sendFile(path.join(__dirname + '/IniciarSesion.html'));
+    } else{
+	response.sendFile(path.join(__dirname + '/servicio_recarga.html'));
+}
+});
+
+
+app.get('/reportes-fallas', function(request, response) {
+	if (request.session.username == undefined) {  
+          response.sendFile(path.join(__dirname + '/IniciarSesion.html'));
+    } else {
+	response.sendFile(path.join(__dirname + '/reportes-fallas.html'));
+}
 });
 
 
@@ -160,6 +206,13 @@ function error(err,rs,cn){
   else
     return 0;
 }
+
+
+app.get('/ubicaciones-base',function(request,response){
+  sql = "select * from ubicacion u1 where fecha_hora = (select max(fecha_hora) from ubicacion u2 where u2.scooter_id = u1.scooter_id and scooter_id<100) order by scooter_id";
+  peticion.open(sql,[],false,response);
+  response.end;
+});
 
 app.listen(8000,function(){
 	console.log('Servidor Web - http://localhost:8000');

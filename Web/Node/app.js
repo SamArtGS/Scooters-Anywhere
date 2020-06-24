@@ -16,16 +16,6 @@ var router = express.Router();
 
 oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
 
-router.get('/scooter',function(request,response){
-  var opc = parseInt(request.query.opc);
-  switch(opc){
-    case 1:
-      sql = "SELECT * FROM SCOOTER WHERE SCOOTER_ID<100";
-      peticion.open(sql,[],false,response);
-      break;
-  }
-  response.end;
-});
 
 app.use(router);
 app.listen(3000,function(){
