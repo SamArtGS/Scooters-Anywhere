@@ -3,7 +3,7 @@
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
 
-whenever sqlerror exit rollback;
+whenever sqlerror continue;
 set feedback off
 
 PROMPT =======================================================================
@@ -35,7 +35,11 @@ PROMPT
 PROMPT COMPOUND TR - - - - - - - - - - - - - -
 
 @s-11-tr-trigger4.sql
+<<<<<<< HEAD
 --@s-12-tr-trigger4-prueba.sql
+=======
+@s-12-tr-trigger4-prueba.sql
+>>>>>>> 197fd1b7d9be8b0cc55c31394bd879eb04544dcf
 
 PROMPT - - - - - - - - - - - - - -
 
@@ -44,8 +48,36 @@ PROMPT TRIGGERS CARGADOS Y VERIFICADOS.       -> OK!
 PROMPT =======================================================================
 PROMPT ========================= PROCEDURES ==================================
 
+@s-13-p-actualizar_status.sql
+PROMPT
+@s-14-p-actualizar_status-prueba.sql
+
+PROMPT - - - - - - - - - - - - - - 
+
+@s-13-p-pagar-recargas.sql
+PROMPT
+@s-14-p-pagar_recargas-prueba.sql
+
+PROMPT - - - - - - - - - - - - - - 
+
+PROMPT EJECUTE EL SCRIPT s-13-p-carga_imagen_local.sql
+pause Press Enter to Continue 
+PROMPT
+@s-14-p-carga_imagen_local-prueba.sql
+
+PROMPT ========================= LOBS  ======================================
+@s-17-lob-imagen_reporte.sql
+PROMPT
+@s-18-lob-imagen_reporte-prueba.sql
+
+PROMPT - - - - - - - - - - - - - - 
+
+@s-13-p-crear_reporte_falla.sql
+PROMPT
+@s-14-p-crear_reporte_falla-prueba.sql
 
 
+PROMPT PROCEDIMIENTOS CARGADAS Y VERIFICADOS.       -> OK!
 PROMPT ======================================================================
 PROMPT ========================= FUNCIONES ==================================
 @s-15-fx-funcion1.sql
@@ -55,9 +87,5 @@ PROMPT ========================= FUNCIONES ==================================
 @s-16-fx-funciones-pruebas.sql
 PROMPT FUNCIONES CARGADAS Y VERIFICADAS.       -> OK!
 PROMPT ======================================================================
-PROMPT ========================= LOBS  ======================================
-
---@s-13-p-actualizar_status.sql
-
-
---@s-14-p-actualizar_status-prueba.sql
+PROMPT ==================== RESULTADOS FINALES ==============================
+@resultados-proyecto-final.sql

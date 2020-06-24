@@ -3,11 +3,15 @@
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
 
+PROMPT Procedimiento 3: Se desea poder generar de forma autómatica los reportes
+PROMPT de fallas de los scooters, así como realizar la carga de las imagenes,
+PROMPT si es que estas existen, para ello el procedimiento deberá recibir
+PROMPT los parametros a insertar y tener almacenados en una tabla temporal
+PROMPT el nombre de las imagenes asociadas con el reporte de falla
+
 
 
 set serveroutput on
-
-
 create or replace procedure sp_crear_reporte_falla(
   p_latitud       in  number  default null,
   p_longitud      in  number  default null,
