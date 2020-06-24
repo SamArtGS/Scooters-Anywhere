@@ -34,3 +34,4 @@ getEmpleado(1,(err,empleado)=> {
 });
 
 // Se va mucho a la derecha y por tanto tendremos problemas con el mantenimiento
+/// /opt/oracle/instantclient_19_6/sqlplus 'CG_PROY_ADMIN@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=cursodb.c7rbflvluzyk.us-east-2.rds.amazonaws.com)(PORT=1521))(CONNECT_DATA=(SID=SCOOTERS)))'
