@@ -10,10 +10,58 @@
     CUARTO: ASIGNAR FUERA DE ZONA AL INSERTAR COORDENADAS
     QUINTO: VERIFICAR QUE EL SCOOTER NO SE ENCUENTRA EN OTRO SERVICIO EN CURSO.
 */
-DROP TRIGGER COBRAR;
-DROP TRIGGER DISPONIBILIDAD_SCOOTER_VIAJE;
-DROP TRIGGER CHECAR_TARJETA_CLIENTE;
-DROP TRIGGER REEMPLAZAR_SCOOTER;
+
+declare 
+  l_count integer;
+begin
+  select count(*)
+    into l_count
+  from user_triggers
+  where trigger_name = 'COBRAR';
+  if l_count > 0 then 
+     execute immediate 'drop trigger COBRAR';
+  end if;
+end;
+/
+
+declare 
+  m_count integer;
+begin
+  select count(*)
+    into m_count
+  from user_triggers
+  where trigger_name = 'DISPONIBILIDAD_SCOOTER_VIAJE';
+  if m_count > 0 then 
+     execute immediate 'drop trigger DISPONIBILIDAD_SCOOTER_VIAJE';
+  end if;
+end;
+/
+
+declare 
+  n_count integer;
+begin
+  select count(*)
+    into n_count
+  from user_triggers
+  where trigger_name = 'CHECAR_TARJETA_CLIENTE';
+  if n_count > 0 then 
+     execute immediate 'drop trigger CHECAR_TARJETA_CLIENTE';
+  end if;
+end;
+/
+
+declare 
+  o_count integer;
+begin
+  select count(*)
+    into o_count
+  from user_triggers
+  where trigger_name = 'REEMPLAZAR_SCOOTER';
+  if o_count > 0 then 
+     execute immediate 'drop trigger REEMPLAZAR_SCOOTER';
+  end if;
+end;
+/
 
 SET LINESIZE 200
 
