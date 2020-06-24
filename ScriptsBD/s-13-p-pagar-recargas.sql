@@ -3,11 +3,13 @@
 -- Author:    Garrido Samuel y Jorge Cárdenas
 -- Fecha:     04 de Junio del 2020
 
-
+PROMPT Procedimiento 2: Se requiere actualizar el pago, que inicialmente es -1,
+PROMPT de los servicios de recarga de scooters, para ello se deberá obtener el 
+PROMPT total de un servicio tipo 'B' considerando el nivel de bateria de todos
+PROMPT los scooters que fueron reemplazados, por cada scooter con un nivel de 
+PROMPT carga equivalente al 100% se le pagará al usuario $200.
 
 set serveroutput on
-
-
 create or replace procedure sp_pagar_recargas(
   p_servicio_id     in  number
 ) is
