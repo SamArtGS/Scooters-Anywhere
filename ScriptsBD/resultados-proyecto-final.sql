@@ -104,7 +104,12 @@ begin
     open cur_constraints;
     loop
         fetch cur_constraints into v_tipo_constraint,v_num_constraints;
-        exit when cur_constraints%notfound;
+        exit when cur_constraints%notfoudeclare
+begin
+  sp_pagar_recargas(
+    p_servicio_id   =>  631
+  );
+endnd;
         case v_tipo_constraint
            when 'C' then
                 v_num_constraints_c:= v_num_constraints;
@@ -125,7 +130,7 @@ begin
     loop
         fetch cur_usuarios into v_username,v_created;
         exit when cur_usuarios%notfound;
-         dbms_output.put_line(v_username||' - '||v_created);
+        dbms_output.put_line(v_username||' - '||v_created);
     end loop;
     close cur_usuarios;  
     
