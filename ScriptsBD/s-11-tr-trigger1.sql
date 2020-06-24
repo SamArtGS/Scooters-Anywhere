@@ -13,9 +13,6 @@
 
 declare 
   l_count integer;
-  m_count integer;
-  n_count integer;
-
 begin
   select count(*)
     into l_count
@@ -27,6 +24,8 @@ begin
 end;
 /
 
+declare 
+  m_count integer;
 begin
   select count(*)
     into m_count
@@ -38,6 +37,8 @@ begin
 end;
 /
 
+declare 
+  n_count integer;
 begin
   select count(*)
     into n_count
@@ -49,6 +50,8 @@ begin
 end;
 /
 
+declare 
+  o_count integer;
 begin
   select count(*)
     into o_count
